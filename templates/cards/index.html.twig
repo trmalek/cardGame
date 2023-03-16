@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Card game !</title>
+</head>
+<body>
+<h1> Card game </h1>
+{% if 'deck' in cardGame|keys %}
+   <h4>  l'ordre initial du paquet de cartes généré avec les couleurs et les valeurs mélangées </h4>
+    <h4>couleurs : </h4>
+    {% for  color in cardGame.deck.colors %}
+        <span style="color: blue">{{ color }}</span><br>
+    {% endfor %}
+    <h4>valeurs : </h4>
+    {% for  value in cardGame.deck.values %}
+        {{ value }}<br>
+    {% endfor %}
+{% endif %}
+{% if 'unsortedHand' in cardGame|keys %}
+    <hr>
+   <h4> Main non triée : </h4>
+    {% for  card in cardGame.unsortedHand %}
+        {{ card.color }} {{ card.value }}<br>
+    {% endfor %}
+{% endif %}
+
+{% if 'sortedHand' in cardGame|keys %}
+    <h4>Main triée : </h4>
+    {% for card in cardGame.sortedHand %}
+        <span style="color: blue">{{ card.color }} </span>{{ card.value }}<br>
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
